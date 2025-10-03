@@ -9,6 +9,10 @@
     padding-left: 5px
 }  
 
+#imagen {
+    height: 250px;
+    width:200px
+}
 .left {
     flex: 0.25;
     background-color: white;
