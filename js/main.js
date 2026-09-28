@@ -30,7 +30,7 @@ function cargar(){
 function buscarLibro () {
     // https://openlibrary.org/dev/docs/api/books#:~:text=For%20example%2C%20here%20is%20a%20sample%20request.
     if (isbn.value) {
-        fetch('https://openlibrary.org/api/books?bibkeys=ISBN:' + isbn.value + '&jscmd=data&format=json')
+        fetch('https://openlibrary.org/search.json?q=isbn:' + isbn.value)
         .then(response => response.json())
         .then(jsonObject => {
             let libro = convertirLibro(jsonObject)
