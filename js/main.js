@@ -42,14 +42,15 @@ function buscarLibro () {
 }
 
 function convertirLibro (json) {
-    let key = Object.keys(json)[0]
-    let datosLibro = json[key]
+   
+    let datosLibro = json.docs[0]
+    let autores = datosLibro.author_name || []
     let libro = {
-        "isbn": key.split(':')[1],
-        "autor": datosLibro.authors.map(a=>a.name).join(', '),
-        "fecha": datosLibro.publish_date,
+        "isbn": json.q.split(':')[1],
+        "autor": autores.join(', '),
+        "fecha": datosLibro.first_publish_year,
         "titulo": datosLibro.title,
-        "filename": datosLibro.cover.medium.replace(URLBASE, '')
+        "filename": datosLibro.cover_i + '-M.jpg'
     }
     return libro
 }
